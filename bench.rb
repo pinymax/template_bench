@@ -3,10 +3,6 @@ require './perfome'
 
 erb = Perfome.new
 
-time = Benchmark.realtime do
-  10000.times do
-    erb.build
-  end
+Benchmark.bm do |x|
+  x.report { 10000.times { erb.build } }
 end
-
-puts time
